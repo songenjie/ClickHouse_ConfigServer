@@ -1,0 +1,135 @@
+[
+  {
+    "cluster": "jdolap_ck_04",
+    "zookeeper": {
+      "port": 2281,
+      "ips": [
+        "10.198.16.71",
+        "10.198.16.72",
+        "10.198.16.73"
+      ]
+    },
+    "shard": {
+      "port": [
+        7602,
+        7702,
+        7802
+      ],
+      "groups": [
+        {
+          "group_number": 0,
+          "inter_replication": true,
+          "weight": 1,
+          "ips": {
+            "1": "10.198.40.191",
+            "2": "10.198.40.192",
+            "3": "10.198.40.193"
+          }
+        },
+        {
+          "group_number": 1,
+          "inter_replication": true,
+          "weight": 1,
+          "ips": {
+            "1": "10.198.40.194",
+            "2": "10.198.40.195",
+            "3": "10.198.40.196"
+          }
+        },
+        {
+          "group_number": 2,
+          "inter_replication": true,
+          "weight": 1,
+          "ips": {
+            "1": "10.198.40.197",
+            "2": "10.198.40.198",
+            "3": "10.198.40.199"
+          }
+        }
+      ]
+    },
+    "user": {
+      "load_balancing": "in_order",
+      "max_memory_usage": "10000000000",
+      "max_memory_usage_for_all_query": "10000000000",
+      "skip_unabvailiable_shard": true
+    },
+    "replicas": [
+      {
+        "http_port": "7601",
+        "tcp_port": "7602",
+        "mysql_port": "7603",
+        "interserver_http_port": "7604",
+        "prometheus_port": "7605",
+        "log_dir": "/data0/***/log",
+        "meta_data_dir": "/data0/***/metadata",
+        "ssl_dir": "/data0/***/ssl",
+        "tmp_dir": "/data0/***/tmp",
+        "conf_dir": "/data0/***/conf",
+        "replica": 1,
+        "data_dir": {
+          "hot": {
+            "diska": "/data0/***/data",
+            "diskb": "/data1/***/data"
+          },
+          "cold": {
+            "diskc": "/data6/***/data1",
+            "diskd": "/data7/***/data1"
+          },
+          "max_data_part_size_bytes": "100000000",
+          "move_factor": "0.25"
+        }
+      },
+      {
+        "http_port": "8601",
+        "tcp_port": "8602",
+        "mysql_port": "8603",
+        "interserver_http_port": "8604",
+        "prometheus_port": "8605",
+        "log_dir": "/data2/***/log",
+        "meta_data_dir": "/data2/***/metadata",
+        "ssl_dir": "/data2/***/ssl",
+        "tmp_dir": "/data2/***/tmp",
+        "conf_dir": "/data2/***/conf",
+        "replica": 2,
+        "data_dir": {
+          "hot": {
+            "disk0": "/data2/***/data",
+            "disk1": "/data3/***/data"
+          },
+          "cold": {
+            "disk6": "/data6/***/data2",
+            "disk7": "/data7/***/data2"
+          },
+          "max_data_part_size_bytes": "100000000",
+          "move_factor": "0.25"
+        }
+      },
+      {
+        "http_port": "9601",
+        "tcp_port": "9602",
+        "mysql_port": "9603",
+        "interserver_http_port": "9604",
+        "prometheus_port": "9605",
+        "log_dir": "/data4/***/log",
+        "meta_data_dir": "/data4/***/metadata",
+        "ssl_dir": "/data4/***/ssl",
+        "tmp_dir": "/data4/***/tmp",
+        "conf_dir": "/data4/***/conf",
+        "replica": 3,
+        "data_dir": {
+          "hot": {
+            "diska": "/data4/***/data",
+            "diskb": "/data5/***/data"
+          },
+          "cold": {
+            "diskc": "/data6/***/data3",
+            "diskd": "/data7/***/data3"
+          },
+          "max_data_part_size_bytes": "100000000",
+          "move_factor": "0.25"
+        }
+      }
+    ]
+  }
+]
